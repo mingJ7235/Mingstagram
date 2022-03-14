@@ -12,10 +12,10 @@
 
 [Frontend]
 
-- JSP
+- Thymeleaf
 
 [도입 예정]
 
 - Build tool : Gradle
 - DB sub : QueryDSL
-- Frontend : Thymeleaf or React
+- Frontend : React
