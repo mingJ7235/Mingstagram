@@ -16,8 +16,8 @@ import java.util.List;
 @SuperBuilder
 @Getter
 @Setter // FIXME : private 으로 추후에 변경
-@NoArgsConstructor (access = AccessLevel.PROTECTED)
-@AllArgsConstructor (access = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@AllArgsConstructor
 public class User extends BaseTime {
 
     @Id

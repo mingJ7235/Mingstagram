@@ -14,8 +14,8 @@ import java.util.List;
 @Getter
 @Setter //FIXME : private
 @SuperBuilder
-@NoArgsConstructor (access = AccessLevel.PROTECTED)
-@AllArgsConstructor (access = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Image extends BaseTime {
 
     @Id
