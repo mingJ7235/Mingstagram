@@ -1,4 +1,4 @@
-package com.joshua.mingstagram.config;
+package com.joshua.mingstagram.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
