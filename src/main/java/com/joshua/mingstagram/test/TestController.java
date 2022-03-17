@@ -18,6 +18,11 @@ public class TestController {
         return "home";
     }
 
+    @GetMapping ("/test/auth/join")
+    public String testJoin() {
+        return "/auth/join";
+    }
+
     @GetMapping("/test/user")
     public @ResponseBody User getUser() {
         User user = new User();

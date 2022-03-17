@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,6 +35,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/auth/loginProc")
                 .defaultSuccessUrl("/");
+
+
+    }
+
+    @Override
+    public void configure(final WebSecurity web) throws Exception {
+        web
+                .ignoring().antMatchers("/css/**")
+                .and()
+                .ignoring().antMatchers("/js/**")
+                .and()
+                .ignoring().antMatchers("/images/**");
     }
 
     // 어떤 인코딩으로 패스워드가 만들어졌는지 알려주기 위함임
