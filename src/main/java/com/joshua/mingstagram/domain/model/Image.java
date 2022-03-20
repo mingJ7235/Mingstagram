@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter //FIXME : private
-@SuperBuilder
+//@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Image extends BaseTime {

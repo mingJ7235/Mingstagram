@@ -1,9 +1,10 @@
 package com.joshua.mingstagram.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.joshua.mingstagram.global.base.BaseTime;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +13,13 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@SuperBuilder
+@Setter //FIXME : Setter private 으로 static 메소드 변경해야함
 @Getter
-@Setter // FIXME : private 으로 추후에 변경
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicUpdate
+@Entity
 public class User extends BaseTime {
 
     @Id
@@ -26,6 +28,7 @@ public class User extends BaseTime {
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
     private String name;

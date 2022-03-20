@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter //FIXME : private
-@SuperBuilder
+//@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Likes extends BaseTime {
