@@ -1,36 +1,42 @@
 package com.joshua.mingstagram.domain.controller;
 
 import com.joshua.mingstagram.domain.model.User;
+import com.joshua.mingstagram.domain.repository.FollowRepository;
 import com.joshua.mingstagram.domain.repository.UserRepository;
+import com.joshua.mingstagram.global.auth.MyUserDetail;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/auth")
+//@RequestMapping("/auth")
 public class UserController {
 
     private final BCryptPasswordEncoder encoder;
 
     private final UserRepository userRepository;
 
-    @GetMapping("/login")
+    private final FollowRepository followRepository;
+
+    @GetMapping("/auth/login")
     public String login() {
         return "auth/login";
     }
 
-    @GetMapping("/join")
+    @GetMapping("/auth/join")
     public String authJoin() {
         return "auth/join";
     }
 
-    @PostMapping("/joinProc")
+    @PostMapping("/auth/joinProc")
     public String authJoinProc(User user) {
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);
@@ -38,6 +44,35 @@ public class UserController {
         userRepository.save(user); // FIXME : layer 분리
 
         return "redirect:/auth/login";
+    }
+
+    @GetMapping("/user/{id}")
+    public String profile(@AuthenticationPrincipal MyUserDetail userDetail,
+                          @PathVariable Long id,
+                          Model model) {
+        /**
+         *   1. imageCount
+         *   2. followerCount
+         *   3. followingCount
+         *   4. User 오브젝트 (Image (likeCount) 컬렉션)
+         *   5. followCheck 팔로우 유무 (1 팔로우, 1이 아니면 언팔로우)
+         */
+
+        // 4. User 오브젝트
+        User toUser = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not found user"));
+
+        model.addAttribute("toUser", toUser);
+
+        // 5. followCheck 팔로우 유무 (1 팔로우, 1이아니면 언팔로우)
+        User user = userDetail.getUser();
+
+        int followCheck = followRepository.countByFromUserIdAndToUserId(user.getId(), id);
+
+        log.info("followCheck : {}", followCheck);
+
+        model.addAttribute("followCheck", followCheck);
+
+        return "user/profile";
     }
 
 }
