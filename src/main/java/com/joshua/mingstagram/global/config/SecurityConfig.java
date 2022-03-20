@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .cors().disable()
                 .authorizeRequests()
-                    .antMatchers("/user/**", "/follow/**", "/images/**")
+                    .antMatchers("/", "/user/**", "/follow/**", "/images/**")
                         .authenticated()
                     .anyRequest()
                         .permitAll()
@@ -34,7 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/auth/loginProc")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/image/feed");
+
+//        http
+//                .authorizeRequests().anyRequest().permitAll();
 
 
     }

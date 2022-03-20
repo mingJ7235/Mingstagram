@@ -30,7 +30,7 @@ public class UserController {
         return "auth/join";
     }
 
-    @PostMapping("/auth/joinProc")
+    @PostMapping("/joinProc")
     public String authJoinProc(User user) {
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);
