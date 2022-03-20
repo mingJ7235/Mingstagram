@@ -34,12 +34,10 @@
                     <input type="hidden" id="userId" th:value="${user.id}">
 
                     <div th:if = "${followCheck eq 1}">
-                        <button th:data-parameter="${user.id}"
-                                th:onClick="follow(false)" class="profile_edit_btn">팔로잉</button>
+                        <button onClick="follow(false);" class="profile_edit_btn">팔로잉</button>
                     </div>
                     <div th:unless = "${followCheck eq 1}">
-                        <button th:data-parameter="${user.id}"
-                                th:onClick="follow(false)" class="profile_follow_btn">팔로우</button>
+                        <button onClick="follow(true);" class="profile_follow_btn">팔로우</button>
                     </div>
                 </div>
 
@@ -47,7 +45,7 @@
                     function follow(check){
                         // true -> follow 하기
                         // false -> unFollow 하기
-                        let userId = document.getElementById('userId').val;
+                        let userId = document.getElementById('userId').value;
                         console.log(userId);
                         let url = "/follow/"+userId;
                         if(check){
