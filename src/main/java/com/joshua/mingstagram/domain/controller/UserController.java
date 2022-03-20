@@ -58,6 +58,8 @@ public class UserController {
          *   5. followCheck 팔로우 유무 (1 팔로우, 1이 아니면 언팔로우)
          */
 
+        model.addAttribute("user", userDetail.getUser());
+
         // 4. User 오브젝트
         User toUser = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not found user"));
 
