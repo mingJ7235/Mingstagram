@@ -69,7 +69,6 @@ public class UserController {
         User user = userDetail.getUser();
 
         int followCheck = followRepository.countByFromUserIdAndToUserId(user.getId(), id);
-
         log.info("followCheck : {}", followCheck);
 
         model.addAttribute("followCheck", followCheck);

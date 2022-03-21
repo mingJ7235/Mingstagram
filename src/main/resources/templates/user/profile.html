@@ -28,11 +28,9 @@
         </div>
         <div class="profile__info">
             <div class="profile__title">
-                <h1 th:text="${user.getName()}"></h1>
+                <h1 th:text="${toUser.getName()}"></h1>
+                <input type="hidden" id="toUserId" th:value="${toUser.id}">
                 <div id="follow_check">
-
-                    <input type="hidden" id="userId" th:value="${user.id}">
-
                     <div th:if = "${followCheck eq 1}">
                         <button onClick="follow(false);" class="profile_edit_btn">팔로잉</button>
                     </div>
@@ -45,9 +43,8 @@
                     function follow(check){
                         // true -> follow 하기
                         // false -> unFollow 하기
-                        let userId = document.getElementById('userId').value;
-                        console.log(userId);
-                        let url = "/follow/"+userId;
+                        let toUserId = document.getElementById('toUserId').value;
+                        let url = "/follow/"+toUserId;
                         if(check){
                             fetch(url,{
                                 method: "POST"
@@ -56,7 +53,7 @@
                             }).then(function(res){
                                 if(res === "ok"){
                                     let follow_check_el = document.querySelector("#follow_check");
-                                    follow_check_el.innerHTML = "<button onClick='follow(false, "+ userId +")' class='profile_edit_btn'>팔로잉</button>";
+                                    follow_check_el.innerHTML = "<button onClick='follow(false);' class='profile_edit_btn'>팔로잉</button>";
                                 }
                             });
                         }else{
@@ -67,7 +64,7 @@
                             }).then(function(res){
                                 if(res === "ok"){
                                     let follow_check_el = document.querySelector("#follow_check");
-                                    follow_check_el.innerHTML = "<button onClick='follow(false, "+ userId +")' class='profile_follow_btn'>팔로우</button>";
+                                    follow_check_el.innerHTML = "<button onClick='follow(true);' class='profile_follow_btn'>팔로우</button>";
                                 }
                             });
                         }
