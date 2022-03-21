@@ -9,15 +9,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Slf4j
 @Controller
+@RequestMapping("/follow")
 @RequiredArgsConstructor
 public class FollowController {
 
@@ -27,7 +25,7 @@ public class FollowController {
 
     private final FollowRepository followRepository;
 
-    @PostMapping ("/follow/{id}")
+    @PostMapping ("/{id}")
     public @ResponseBody String follow (@AuthenticationPrincipal MyUserDetail userDetail,
                                         @PathVariable Long id) {
 
@@ -45,7 +43,7 @@ public class FollowController {
         return "ok";
     }
 
-    @DeleteMapping ("/follow/{id}")
+    @DeleteMapping ("/{id}")
     public @ResponseBody String unFollow (@AuthenticationPrincipal MyUserDetail userDetail,
                                           @PathVariable Long id) {
 
@@ -56,9 +54,22 @@ public class FollowController {
 
         followRepository.deleteByFromUserIdAndToUserId(fromUser.getId(), toUser.getId());
 
-//        List<Follow> follows = followRepository.findAll();
+        List<Follow> follows = followRepository.findAll();
 
         return "ok";
+    }
+
+    //FIXME : url, html 이름 변경할 것
+    @GetMapping ("/follower/{id}")
+    public String followFollower (@PathVariable Long id) {
+
+        return "follow/follow";
+    }
+
+    @GetMapping ("/follow/{id}")
+    public String followFollow (@PathVariable Long id) {
+
+        return "follow/follow";
     }
 
 

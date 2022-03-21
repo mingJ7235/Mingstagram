@@ -58,22 +58,29 @@ public class UserController {
          *   5. followCheck 팔로우 유무 (1 팔로우, 1이 아니면 언팔로우)
          */
 
-        model.addAttribute("user", userDetail.getUser());
-
         // 4. User 오브젝트
-        User toUser = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not found user"));
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not found user"));
 
-        model.addAttribute("toUser", toUser);
+        model.addAttribute("user", user);
 
         // 5. followCheck 팔로우 유무 (1 팔로우, 1이아니면 언팔로우)
-        User user = userDetail.getUser();
+        User principal = userDetail.getUser();
 
-        int followCheck = followRepository.countByFromUserIdAndToUserId(user.getId(), id);
+        int followCheck = followRepository.countByFromUserIdAndToUserId(principal.getId(), id);
         log.info("followCheck : {}", followCheck);
 
         model.addAttribute("followCheck", followCheck);
 
         return "user/profile";
+    }
+
+    @GetMapping ("/user/edit/{id}")
+    public String userEdit (@PathVariable Long id) {
+
+        // 해당 id로 select 할것 -> 본인 id 만 접근 가능하도록
+        // findByUserInfo ()
+
+        return "user/profile_edit";
     }
 
 }
