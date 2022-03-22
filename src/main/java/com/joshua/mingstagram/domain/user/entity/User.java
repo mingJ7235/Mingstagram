@@ -1,7 +1,8 @@
-package com.joshua.mingstagram.domain.model;
+package com.joshua.mingstagram.domain.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.joshua.mingstagram.domain.image.entity.Image;
 import com.joshua.mingstagram.global.base.BaseTime;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;

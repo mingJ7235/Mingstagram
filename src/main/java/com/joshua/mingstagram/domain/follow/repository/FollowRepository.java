@@ -1,6 +1,6 @@
-package com.joshua.mingstagram.domain.repository;
+package com.joshua.mingstagram.domain.follow.repository;
 
-import com.joshua.mingstagram.domain.model.Follow;
+import com.joshua.mingstagram.domain.follow.entity.Follow;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,7 +1,7 @@
-package com.joshua.mingstagram.domain.controller;
+package com.joshua.mingstagram.domain.image.controller;
 
-import com.joshua.mingstagram.domain.model.User;
-import com.joshua.mingstagram.domain.repository.UserRepository;
+import com.joshua.mingstagram.domain.user.entity.User;
+import com.joshua.mingstagram.domain.user.repository.UserRepository;
 import com.joshua.mingstagram.global.auth.MyUserDetail;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

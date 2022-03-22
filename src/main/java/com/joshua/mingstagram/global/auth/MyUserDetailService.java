@@ -1,7 +1,7 @@
 package com.joshua.mingstagram.global.auth;
 
-import com.joshua.mingstagram.domain.model.User;
-import com.joshua.mingstagram.domain.repository.UserRepository;
+import com.joshua.mingstagram.domain.user.entity.User;
+import com.joshua.mingstagram.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

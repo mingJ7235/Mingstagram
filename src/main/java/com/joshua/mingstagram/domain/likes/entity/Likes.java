@@ -1,10 +1,11 @@
-package com.joshua.mingstagram.domain.model;
+package com.joshua.mingstagram.domain.likes.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.joshua.mingstagram.domain.image.entity.Image;
+import com.joshua.mingstagram.domain.user.entity.User;
 import com.joshua.mingstagram.global.base.BaseTime;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 

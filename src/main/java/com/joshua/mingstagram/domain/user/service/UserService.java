@@ -1,6 +1,6 @@
-package com.joshua.mingstagram.domain.service;
+package com.joshua.mingstagram.domain.user.service;
 
-import com.joshua.mingstagram.domain.repository.UserRepository;
+import com.joshua.mingstagram.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
