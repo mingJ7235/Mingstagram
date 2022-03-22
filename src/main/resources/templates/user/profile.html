@@ -29,12 +29,14 @@
                 <!--                <h1 th:text="${user.getName()}"></h1>-->
                 <h1 th:text="${user.username}"></h1>
                 <input id="toUserId" th:value="${user.id}" type="hidden">
-                <div id="follow_check">
-                    <div th:if="${followCheck eq 1}">
-                        <button class="profile_edit_btn" onClick="follow(false);">팔로잉</button>
-                    </div>
-                    <div th:unless="${followCheck eq 1}">
-                        <button class="profile_follow_btn" onClick="follow(true);">팔로우</button>
+                <div th:if="${owner.id ne user.id} ">
+                    <div id="follow_check">
+                        <div th:if="${followCheck eq 1}">
+                            <button class="profile_edit_btn" onClick="follow(false);">팔로잉</button>
+                        </div>
+                        <div th:unless="${followCheck eq 1}">
+                            <button class="profile_follow_btn" onClick="follow(true);">팔로우</button>
+                        </div>
                     </div>
                 </div>
 

@@ -50,6 +50,10 @@ public class UserController {
     public String profile(@AuthenticationPrincipal MyUserDetail userDetail,
                           @PathVariable Long id,
                           Model model) {
+
+        User owner = userRepository.findByUsername(userDetail.getUsername());
+        model.addAttribute("owner", owner);
+
         /**
          *   1. imageCount
          *   2. followerCount

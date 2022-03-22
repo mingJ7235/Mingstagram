@@ -22,9 +22,9 @@ public class ImageController {
 
         log.info("username : {}", userDetail.getUsername());
 
-        User user = userRepository.findByUsername(userDetail.getUsername());
+        User owner = userRepository.findByUsername(userDetail.getUsername());
 
-        model.addAttribute("principalId", user.getId());
+        model.addAttribute("owner", owner);
 
         return "image/feed";
     }
