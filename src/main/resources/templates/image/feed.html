@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Instagram</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           rel="stylesheet">
-    <link rel="shortcut icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link href="/images/favicon.ico" rel="shortcut icon">
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
-
-
+<div th:replace="/include/nav.html :: fragment-nav"></div>
 <main id="feed">
     <div class="photo u-default-box">
         <header class="photo__header">
-            <img src="/images/avatar.jpg" /> <span class="photo__username">serranoarevalo</span>
+            <img src="/images/avatar.jpg"/> <span class="photo__username">serranoarevalo</span>
         </header>
-        <img src="/images/feedPhoto.jpg" />
+        <img src="/images/feedPhoto.jpg"/>
         <div class="photo__info">
             <div class="photo__actions">
 					<span class="photo__action"> <i class="fa fa-heart-o heart"></i>
@@ -29,9 +28,11 @@
             <span class="photo__likes">5,103 likes</span>
             <ul class="photo__comments">
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    love this!</li>
+                    love this!
+                </li>
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    don't love this!</li>
+                    don't love this!
+                </li>
             </ul>
             <span class="photo__date">1 hour ago</span>
             <div class="photo__add-comment-container">
@@ -42,9 +43,9 @@
     </div>
     <div class="photo u-default-box">
         <header class="photo__header">
-            <img src="/images/avatar.jpg" /> <span class="photo__username">serranoarevalo</span>
+            <img src="/images/avatar.jpg"/> <span class="photo__username">serranoarevalo</span>
         </header>
-        <img src="/images/feedPhoto.jpg" />
+        <img src="/images/feedPhoto.jpg"/>
         <div class="photo__info">
             <div class="photo__actions">
 					<span class="photo__action"> <i class="fa fa-heart-o heart"></i>
@@ -54,9 +55,11 @@
             <span class="photo__likes">5,103 likes</span>
             <ul class="photo__comments">
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    love this!</li>
+                    love this!
+                </li>
                 <li class="photo__comment"><span class="photo__comment-author">serranoarevalo</span> i
-                    don't love this!</li>
+                    don't love this!
+                </li>
             </ul>
             <span class="photo__date">1 hour ago</span>
             <div class="photo__add-comment-container">
@@ -66,7 +69,7 @@
         </div>
     </div>
 </main>
-
+<div th:replace="/include/footer.html :: fragment-footer"></div>
 <script src="/js/feed.js"></script>
 <script src="/js/like.js"></script>
 </body>
