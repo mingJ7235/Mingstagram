@@ -22,6 +22,7 @@ public class MyUserDetailService implements UserDetailsService {
 
         if (user != null) {
             userDetail  = new MyUserDetail();
+
             userDetail.setUser(user);
         }else {
             throw new UsernameNotFoundException("Not found 'username'");
